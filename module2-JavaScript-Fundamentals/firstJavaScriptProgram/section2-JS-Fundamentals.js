@@ -349,20 +349,247 @@ for (let i = 0; i < products.length; i++) {
   console.log(\`Your product \${products[i]} was added\`);
 }
 
-`;
-
-
 /**
- *      While Loop
+ * ================= While Loop ================= //
  */
 
 let i = 0;
 
-while (i<0) {
-  console.log(`Number: ${i}`);
+while (i<10) {
+  // console.log(\`Number: \${i}\`);
+  if (i === 5) {
+    console.log(\`Number: five\`);
+    i++;
+    // continue;
+    // break;
+  }
+  console.log(\`Number: \${i}\`);
   i++;
 }
 
+const music = ['song1', 'song2', 'song3'];
+
+let i = 0;
+
+while (i < music.length) {
+  console.log(\`Playing \${music[i]}\`);
+  i++;
+}
+
+let i = 10;
+
+do {
+  console.log(\`Number: \${i}\`);
+  i++;
+} while(i < 10);
+
+/**
+ * ================= forEach ================= //
+ */
+
+ const tasks = ['code', 'eat', 'code', 'project', 'learn-js'];
+
+ for (let i = 0; i < tasks.length; i++) {
+   console.log(tasks[i]);
+ }
+
+tasks.forEach(function(task, index) {
+  console.log(index, ': ', task);
+});
+
+const shopCart = [
+  {id: 1, product: 'book'},
+  {id: 2, product: 'shirt'},
+  {id: 3, product: 'guitar'},
+  {id: 4, product: 'headphones'},
+  {id: 5, product: 'laptop'}
+];
+
+const productName = shopCart.map(function(shopCart) {
+  return shopCart.product;
+});
+
+console.log(productName);
+
+const car = {
+  model: 2021,
+  brand: 'Seat',
+  motor: 'v2',
+}
+
+for (const piece in car) {
+  console.log(\`\${typeof piece} --- \${car[piece]}\`);
+}
+
+// console.log(car);
+
+
+// ================= Iterators for Arrays, Set and Maps ================= //
+const cities = ['New York', 'Madrid', 'Paris', 'London'];
+const orders = new Set([123,321,345,341]);
+const data = new Map();
+
+data.set('name', 'Pepe');
+data.set('profession', 'web developer');
+
+// console.log(cities);
+// console.log(orders);
+// console.log(data);
+
+// =================Entries() Iterator ================= //
+// cities entries
+for (const entry of cities.entries()) {
+  console.log(entry);
+  //prints the value with its key which is in this case the position of each value
+  // Array [ 0, "New York" ]
+  // Array [ 1, "Madrid" ]
+  // Array [ 2, "Paris" ]
+  // Array [ 3, "London" ]
+}
+// orders entries
+for (const entry of orders.entries()) {
+  console.log(entry);
+  // a new Set has the same values of the keys for that it prints the same number
+  // Array [ 123, 123 ]
+  // Array [ 321, 321 ]
+  // Array [ 345, 345 ]
+  // Array [ 341, 341 ]
+}
+// data entries
+for (const entry of data.entries()) {
+  console.log(entry);
+  // print the properties with its value which was set with the data.set()
+  // Array [ "name", "Pepe" ]
+  // Array [ "profession", "web developer" ]
+}
+
+// =================Values() Iterator ================= //
+// cities values
+for (const value of cities.values()) {
+  console.log(value);
+  //prints the values of the cities array
+  // New York
+  // Madrid
+  // Paris
+  // London
+}
+// orders values
+for (const value of orders.values()) {
+  console.log(value);
+  // print the values of orders
+  // 123
+  // 321
+  // 345
+  // 341
+}
+// data values
+for (const value of data.values()) {
+  console.log(value);
+  // print the values of data
+  // Pepe
+  // web developer
+}
+
+// =================Keys() Iterator ================= //
+// cities keys
+for (const key of cities.keys()) {
+  console.log(key);
+  //prints the keys of the cities array
+  // 0
+  // 1
+  // 2
+  // 3
+}
+// orders keys
+for (const key of orders.keys()) {
+  console.log(key);
+  // print the keys of orders
+  // 123
+  // 321
+  // 345
+  // 341
+}
+// data keys
+for (const key of data.keys()) {
+  console.log(key);
+  // print the keys of data
+  // name
+  // profession
+}
+
+// =================default Iterator ================= //
+// cities defaults
+for (const defolt of cities) {
+  console.log(defolt);
+  //prints the defaults of the cities array
+  // New York
+  // Madrid
+  // Paris
+  // London
+}
+// orders defaults
+for (const defolt of orders) {
+  console.log(defolt);
+  // print the defaults of orders
+  // 123
+  // 321
+  // 345
+  // 341
+}
+// data defaults
+for (const defolt of data) {
+  console.log(defolt);
+  // print the defaults of data
+  // Array [ "name", "Pepe" ]
+  // Array [ "profession", "web developer" ]
+}
+
+// ================= string Iterators ================= //
+
+const message = 'Learning-JavaScript';
+// Old version
+for (let i = 0; i < message.length; i++) {
+  // console.log(message[i]);
+}
+// New version
+for (const letter of message) {
+  // console.log(letter);
+}
+
+const aElements = document.getElementsByTagName('a');
+for (const link of aElements) {
+  // console.log(link);
+  // console.log(link.href);
+}
+
+// ================= Scope ================= //
+// var puede ser modificado en el scope de bloque es por eso qeu no suele utilizarse ya
+// mientras que let y const mantienen su valor limitado en el scope que esten siendo utilizadas
+var a = 'a';
+let b = 'b';
+const c = 'c';
+
+// Scope de la Funcion
+scope();
+function scope() {
+  var a = 'A';
+  let b = 'B';
+  const c = 'C';
+  console.log('LOCALES FUNCION: ' + a,b,c);
+}
+
+// Scope de Bloque {}
+
+if (true) {
+  var a = 'AA';
+  let b = 'BB';
+  const c = 'CC';
+  console.log('BLOQUE: ' + a,b,c);
+}
+
+console.log('GLOBALES: ' + a,b,c);
+
+`;
 
 
 
